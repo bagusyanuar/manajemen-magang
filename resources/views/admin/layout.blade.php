@@ -57,10 +57,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"
-                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/staff*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.staff') }}"
+                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/karyawan*') ? 'active' : '' }}">
                         <i class='bx bx-user'></i>
-                        <p>Staff</p>
+                        <p>Karyawan</p>
                     </a>
                 </li>
                 <li class="nav-item">
