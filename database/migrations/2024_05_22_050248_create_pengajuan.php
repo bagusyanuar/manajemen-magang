@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pengajuan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->string('no_pengajuan')->unique();
             $table->date('tanggal');
             $table->text('surat_pengajuan')->nullable();
             $table->text('cv')->nullable();

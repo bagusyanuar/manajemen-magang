@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Ramsey\Uuid\Uuid;
 
 class RegisterController extends CustomController
@@ -55,6 +56,7 @@ class RegisterController extends CustomController
 
                 $data_application = [
                     'user_id' => $user->id,
+                    'no_pengajuan' => 'PM-' . date('YmdHis'),
                     'tanggal' => Carbon::now()->format('Y-m-d'),
                     'status' => 'menunggu',
                     'deskripsi' => ''
@@ -82,12 +84,21 @@ class RegisterController extends CustomController
 
                 Pengajuan::create($data_application);
                 DB::commit();
-                return redirect()->back()->with('success', 'Berhasil melakukan pengajuan');
+                return redirect()->route('register.finish')->with('finish', 'oke');
             } catch (\Exception $e) {
                 DB::rollBack();
                 return redirect()->back()->with('failed', 'terjadi kesalahan server...');
             }
         }
         return view('register');
+    }
+
+    public function finish()
+    {
+        if (!Session::has('finish')) {
+            return redirect()->route('login');
+        }
+        Session::flush();
+        return view('register-selesai');
     }
 }

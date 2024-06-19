@@ -13,6 +13,7 @@ class Pengajuan extends Model
 
     protected $fillable = [
         'user_id',
+        'no_pengajuan',
         'tanggal',
         'surat_pengajuan',
         'cv',

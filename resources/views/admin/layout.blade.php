@@ -66,29 +66,22 @@
                 <li class="nav-item">
                     <a href="#"
                        class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/peserta*') ? 'active' : '' }}">
-                        <i class='bx bx-user-pin' ></i>
+                        <i class='bx bx-group'></i>
                         <p>Peserta Magang</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#"
-                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/biaya-pengiriman*') ? 'active' : '' }}">
-                        <i class='bx bx-car'></i>
-                        <p>Biaya Pengiriman</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#"
-                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/pesanan*') ? 'active' : '' }}">
-                        <i class='bx bx-shopping-bag'></i>
-                        <p>Pesanan</p>
+                    <a href="{{ route('admin.application') }}"
+                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/pengajuan-magang*') ? 'active' : '' }}">
+                        <i class='bx bx-receipt'></i>
+                        <p>Pengajuan Magang</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#"
                        class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan*') ? 'active' : '' }}">
                         <i class='bx bxs-report'></i>
-                        <p>Laporan</p>
+                        <p>Laporan Kegiatan</p>
                     </a>
                 </li>
             </ul>
