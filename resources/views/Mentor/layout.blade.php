@@ -22,7 +22,7 @@
     <link href="{{ asset('/css/style.admin.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/sweetalert2.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/sweetalert2.min.js')}}"></script>
-    <title>MANAJEMEN MAGANG DIGIMIZU | Halaman Admin</title>
+    <title>MANAJEMEN MAGANG DIGIMIZU | Halaman Pembimbing</title>
     @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,43 +49,21 @@
         </div>
         <div class="sidebar-item-container">
             <ul class="nav nav-sidebar nav-pills flex-column" style="gap: 0.25rem">
-                @if(auth()->user()->role === 'admin')
-                    <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin') ? 'active' : '' }}">
-                            <i class="bx bxs-dashboard"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.staff') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/karyawan*') ? 'active' : '' }}">
-                            <i class='bx bx-user'></i>
-                            <p>Karyawan</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.peserta') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/peserta-magang*') ? 'active' : '' }}">
-                            <i class='bx bx-group'></i>
-                            <p>Peserta Magang</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.application') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/pengajuan-magang*') ? 'active' : '' }}">
-                            <i class='bx bx-receipt'></i>
-                            <p>Pengajuan Magang</p>
-                        </a>
-                    </li>
-                @endif
-                {{--                <li class="nav-item">--}}
-                {{--                    <a href="#"--}}
-                {{--                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan*') ? 'active' : '' }}">--}}
-                {{--                        <i class='bx bxs-report'></i>--}}
-                {{--                        <p>Laporan Kegiatan</p>--}}
-                {{--                    </a>--}}
-                {{--                </li>--}}
+
+                <li class="nav-item">
+                    <a href="{{ route('mentor.dashboard') }}"
+                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('mentor') ? 'active' : '' }}">
+                        <i class="bx bxs-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('mentor.penilaian') }}"
+                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('mentor/penilaian*') ? 'active' : '' }}">
+                        <i class='bx bx-group'></i>
+                        <p>Penilaian</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

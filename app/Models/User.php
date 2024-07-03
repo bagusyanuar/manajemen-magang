@@ -53,4 +53,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Karyawan::class,'user_id');
     }
+
+    public function pengajuan_diterima()
+    {
+        return $this->hasOne(Pengajuan::class, 'user_id')
+            ->orderBy('created_at', 'DESC')
+            ->where('status', '=', 'diterima');
+    }
 }

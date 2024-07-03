@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Helper\CustomController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends CustomController
@@ -37,10 +38,24 @@ class LoginController extends CustomController
                 'password' => $this->postField('password')
             ];
             if ($this->isAuth($credentials)) {
+                if (auth()->user()->role === 'peserta') {
+                    return redirect()->route('peserta.kegiatan');
+                }
+
+                if (auth()->user()->role === 'karyawan') {
+                    return redirect()->route('mentor.dashboard');
+                }
+
                 return redirect()->route('admin.dashboard');
             }
             return redirect()->back()->with('failed', 'Periksa Kembali Username dan Password Anda');
         }
         return view('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }
