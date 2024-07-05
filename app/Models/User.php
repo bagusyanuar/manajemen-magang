@@ -60,4 +60,12 @@ class User extends Authenticatable
             ->orderBy('created_at', 'DESC')
             ->where('status', '=', 'diterima');
     }
+
+    public function pengajuan()
+    {
+        return $this->hasOne(Pengajuan::class, 'user_id')
+            ->orderBy('created_at', 'DESC');
+    }
+
+
 }

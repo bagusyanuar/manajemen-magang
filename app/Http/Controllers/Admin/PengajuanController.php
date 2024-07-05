@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Helper\CustomController;
+use App\Mail\KonfirmasiMail;
 use App\Models\Karyawan;
 use App\Models\Pengajuan;
+use App\Models\PesertaMagang;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PengajuanController extends CustomController
 {
@@ -87,11 +90,15 @@ class PengajuanController extends CustomController
                 $data_member['pembimbing_id'] = $mentor;
             }
             $member->update($data_member);
+            $email = 'damn.john88@gmail.com';
+            $member = PesertaMagang::with(['user.pengajuan'])
+                ->where('id', '=', 3)
+                ->first();
+            Mail::to($email)->send(new KonfirmasiMail($member, $data->no_pengajuan, $status, $reason, $start, $end));
             DB::commit();
             return redirect()->back()->with('success', 'Berhasil Melakukan Konfirmasi...');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
             return redirect()->back()->with('failed', 'terjadi kesalahan server...');
         }
     }

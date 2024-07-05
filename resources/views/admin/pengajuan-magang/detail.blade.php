@@ -14,7 +14,7 @@
                 icon: 'success',
                 timer: 700
             }).then(() => {
-                window.location.reload();
+                window.location.href = '{{ route('admin.application') }}';
             })
         </script>
     @endif
