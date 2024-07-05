@@ -78,6 +78,13 @@
                             <p>Pengajuan Magang</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.application') }}"
+                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/pengajuan-magang*') ? 'active' : '' }}">
+                            <i class='bx bxs-report'></i>
+                            <p>Laporan Magang</p>
+                        </a>
+                    </li>
                 @endif
                 {{--                <li class="nav-item">--}}
                 {{--                    <a href="#"--}}

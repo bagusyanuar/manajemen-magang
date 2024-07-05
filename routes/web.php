@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'peserta-magang'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\PesertaController::class, 'index'])->name('admin.peserta');
-        Route::get('/{id}', [\App\Http\Controllers\Admin\PesertaController::class, 'detail'])->name('admin.peserta.detail');
+        Route::match(['post', 'get'],'/{id}', [\App\Http\Controllers\Admin\PesertaController::class, 'detail'])->name('admin.peserta.detail');
     });
 
     Route::group(['prefix' => 'pengajuan-magang'], function () {

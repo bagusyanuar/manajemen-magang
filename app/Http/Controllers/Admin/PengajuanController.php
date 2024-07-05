@@ -82,6 +82,7 @@ class PengajuanController extends CustomController
                 'is_active' => false,
                 'di_terima' => false,
             ];
+
             if ($status === 'diterima') {
                 $data_member['tanggal_mulai'] = $start;
                 $data_member['tanggal_selesai'] = $end;
@@ -91,9 +92,9 @@ class PengajuanController extends CustomController
             }
             $member->update($data_member);
             $email = 'damn.john88@gmail.com';
-            $member = PesertaMagang::with(['user.pengajuan'])
-                ->where('id', '=', 3)
-                ->first();
+//            $member = PesertaMagang::with(['user.pengajuan'])
+//                ->where('id', '=', 3)
+//                ->first();
             Mail::to($email)->send(new KonfirmasiMail($member, $data->no_pengajuan, $status, $reason, $start, $end));
             DB::commit();
             return redirect()->back()->with('success', 'Berhasil Melakukan Konfirmasi...');
