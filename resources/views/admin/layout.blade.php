@@ -86,8 +86,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.report.member') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan-peserta*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.report.activity') }}"
+                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan-kegiatan*') ? 'active' : '' }}">
                             <i class='bx bxs-report'></i>
                             <p>Laporan Kegiatan</p>
                         </a>

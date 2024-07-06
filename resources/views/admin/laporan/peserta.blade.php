@@ -153,9 +153,8 @@
             });
             $('#btn-print').on('click', function (e) {
                 e.preventDefault();
-                let start = $('#start').val();
-                let end = $('#end').val();
-                window.open('/admin/laporan-konsultasi/cetak?start=' + start + '&end=' + end, '_blank');
+                let status = $('#status').val();
+                window.open('/admin/laporan-peserta/cetak?status=' + status, '_blank');
             })
 
 

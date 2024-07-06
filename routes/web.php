@@ -46,6 +46,12 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'laporan-peserta'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan_peserta'])->name('admin.report.member');
+        Route::get('/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan_peserta_cetak'])->name('admin.report.member.print');
+    });
+
+    Route::group(['prefix' => 'laporan-kegiatan'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan_kegiatan'])->name('admin.report.activity');
+        Route::get('/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan_kegiatan_cetak'])->name('admin.report.activity.print');
     });
 });
 
