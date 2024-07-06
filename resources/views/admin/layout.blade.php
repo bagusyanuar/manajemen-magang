@@ -79,10 +79,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.application') }}"
-                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/pengajuan-magang*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.report.member') }}"
+                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan-peserta*') ? 'active' : '' }}">
                             <i class='bx bxs-report'></i>
-                            <p>Laporan Magang</p>
+                            <p>Laporan Peserta</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.report.member') }}"
+                           class="nav-link d-flex align-items-center sidebar-item {{ request()->is('admin/laporan-peserta*') ? 'active' : '' }}">
+                            <i class='bx bxs-report'></i>
+                            <p>Laporan Kegiatan</p>
                         </a>
                     </li>
                 @endif

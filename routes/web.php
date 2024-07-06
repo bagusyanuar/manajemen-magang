@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\PengajuanController::class, 'index'])->name('admin.application');
         Route::match(['post', 'get'], '/{id}', [\App\Http\Controllers\Admin\PengajuanController::class, 'detail'])->name('admin.application.detail');
     });
+
+    Route::group(['prefix' => 'laporan-peserta'], function () {
+        Route::get('/', [\App\Http\Controllers\Admin\LaporanController::class, 'laporan_peserta'])->name('admin.report.member');
+    });
 });
 
 Route::group(['prefix' => 'mentor'], function () {
