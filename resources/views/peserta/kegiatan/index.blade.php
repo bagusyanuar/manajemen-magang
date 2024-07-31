@@ -27,6 +27,7 @@
                 <th width="5%" class="text-center">#</th>
                 <th width="15%" class="text-center">Tanggal</th>
                 <th>Nama Kegiatan</th>
+                <th width="15%" class="text-center">Lampiran</th>
                 <th width="10%" class="text-center">Aksi</th>
             </tr>
             </thead>
@@ -56,7 +57,13 @@
                     eventDelete();
                 },
                 columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false, className: 'text-center middle-header',},
+                    {
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        searchable: false,
+                        orderable: false,
+                        className: 'text-center middle-header',
+                    },
                     {
                         data: 'tanggal',
                         className: 'middle-header text-center',
@@ -64,6 +71,16 @@
                     {
                         data: 'kegiatan',
                         className: 'middle-header',
+                    },
+                    {
+                        data: 'file',
+                        className: 'middle-header text-center',
+                        render: function (data) {
+                            if (data !== null) {
+                                return '<a href="' + data + '">Lihat</a>'
+                            }
+                            return '-';
+                        }
                     },
                     {
                         data: null,

@@ -91,7 +91,7 @@ class PengajuanController extends CustomController
                 $data_member['pembimbing_id'] = $mentor;
             }
             $member->update($data_member);
-            $email = 'damn.john88@gmail.com';
+            $email = $data->user->email;
 //            $member = PesertaMagang::with(['user.pengajuan'])
 //                ->where('id', '=', 3)
 //                ->first();

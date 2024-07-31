@@ -14,7 +14,8 @@ class Kegiatan extends Model
     protected $fillable = [
         'user_id',
         'tanggal',
-        'kegiatan'
+        'kegiatan',
+        'file'
     ];
 
     public function user()

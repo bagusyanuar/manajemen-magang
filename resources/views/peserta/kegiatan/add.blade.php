@@ -31,7 +31,7 @@
         </nav>
     </div>
     <div class="card-content">
-        <form method="post" id="form-data">
+        <form method="post" id="form-data" enctype="multipart/form-data">
             @csrf
             <div class="w-100 mb-3">
                 <label for="date" class="form-label input-label">Tanggal Kegiatan <span
@@ -54,6 +54,12 @@
                         {{ $errors->first('activity') }}
                     </span>
                 @endif
+            </div>
+            <div class="w-100 mb-3">
+                <label for="file" class="form-label input-label">Lampiran</label>
+                <input type="file" class="text-input"
+                       id="file"
+                       name="file">
             </div>
             <hr class="custom-divider"/>
             <div class="d-flex align-items-center justify-content-end w-100">

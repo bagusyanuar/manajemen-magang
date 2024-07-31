@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class KegiatanController extends CustomController
 {
@@ -23,6 +24,7 @@ class KegiatanController extends CustomController
     {
         if ($this->request->ajax()) {
             $data = Kegiatan::with(['user'])
+                ->where('user_id', '=', auth()->id())
                 ->get();
             return $this->basicDataTables($data);
         }
@@ -69,8 +71,18 @@ class KegiatanController extends CustomController
                 'tanggal' => $this->postField('date'),
                 'kegiatan' => $this->postField('activity'),
             ];
+
+            if ($this->request->hasFile('file')) {
+                $file = $this->request->file('file');
+                $extension = $file->getClientOriginalExtension();
+                $document = Uuid::uuid4()->toString() . '.' . $extension;
+                $storage_path = public_path('assets/kegiatan');
+                $documentName = $storage_path . '/' . $document;
+                $data_request['file'] = '/assets/kegiatan/' . $document;
+                $file->move($storage_path, $documentName);
+            }
             Kegiatan::create($data_request);
-            return redirect()->back()->with('success', 'Berhasil menyimpan data karyawan...');
+            return redirect()->back()->with('success', 'Berhasil menyimpan data kegiatan...');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('failed', 'terjadi kesalahan server...');
         }
