@@ -19,13 +19,15 @@ class KonfirmasiMail extends Mailable
     public $dateEnd;
     public $status;
     public $reason;
+    public $user;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($member, $no_pengajuan, $status, $reason, $dateStart, $dateEnd)
+    public function __construct($member, $no_pengajuan, $status, $reason, $dateStart, $dateEnd, $user)
     {
         $this->member = $member;
+        $this->user = $user;
         $this->dateStart = $dateStart;
         $this->dateEnd = $dateEnd;
         $this->status = $status;
@@ -50,6 +52,7 @@ class KonfirmasiMail extends Mailable
     {
         return new Content('admin.email.konfirmasi', null, null, null, [
             'member' => $this->member,
+            'user' => $this->user,
             'status' => $this->status,
             'reason' => $this->reason,
             'dateStart' => $this->dateStart,

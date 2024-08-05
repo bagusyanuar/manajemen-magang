@@ -47,6 +47,12 @@
         Kegiatan magang akan di laksanakan dari tanggal <span class="font-bold">{{ $dateStart }}</span> sampai dengan <span
             class="font-bold">{{ $dateEnd }}</span>
     </div>
+    <div style="width: 100%; margin-bottom: 5px;">
+        <div>Username Anda : <span style="font-weight: bold">{{ $user->username }}</span></div>
+    </div>
+    <div style="width: 100%; margin-bottom: 5px;">
+        <div>Password Anda : <span style="font-weight: bold">{{ $user->password_hint }}</span></div>
+    </div>
 @else
     <div style="width: 100%; text-align: center; margin-bottom: 1rem;">
         Adapun penolakan pengajuan magang di karenakan {{ $reason }}

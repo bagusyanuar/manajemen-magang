@@ -64,6 +64,13 @@
                         <p>Penilaian</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('mentor.report.activity') }}"
+                       class="nav-link d-flex align-items-center sidebar-item {{ request()->is('mentor/laporan-kegiatan*') ? 'active' : '' }}">
+                        <i class='bx bxs-report'></i>
+                        <p>Laporan Kegiatan</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -64,6 +64,8 @@ class PengajuanController extends CustomController
 
             /** @var Model $member */
             $member = $data->user->peserta;
+
+            $user = $data->user;
             $data_application = [
                 'status' => $status,
                 'deskripsi' => $reason
@@ -95,7 +97,7 @@ class PengajuanController extends CustomController
 //            $member = PesertaMagang::with(['user.pengajuan'])
 //                ->where('id', '=', 3)
 //                ->first();
-            Mail::to($email)->send(new KonfirmasiMail($member, $data->no_pengajuan, $status, $reason, $start, $end));
+            Mail::to($email)->send(new KonfirmasiMail($member, $data->no_pengajuan, $status, $reason, $start, $end, $user));
             DB::commit();
             return redirect()->back()->with('success', 'Berhasil Melakukan Konfirmasi...');
         } catch (\Exception $e) {

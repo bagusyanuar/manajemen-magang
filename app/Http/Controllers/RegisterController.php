@@ -39,7 +39,8 @@ class RegisterController extends CustomController
                     'email' => $email,
                     'username' => $username,
                     'password' => $password,
-                    'role' => $role
+                    'role' => $role,
+                    'password_hint' => $this->postField('password'),
                 ];
 
                 $user = User::create($data_account);

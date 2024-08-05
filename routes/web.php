@@ -62,4 +62,9 @@ Route::group(['prefix' => 'mentor'], function () {
         Route::get('/', [\App\Http\Controllers\Mentor\PenilaianController::class, 'index'])->name('mentor.penilaian');
         Route::match(['post', 'get'], '/{id}', [\App\Http\Controllers\Mentor\PenilaianController::class, 'detail'])->name('mentor.penilaian.detail');
     });
+
+    Route::group(['prefix' => 'laporan-kegiatan'], function () {
+        Route::get('/', [\App\Http\Controllers\Mentor\LaporanController::class, 'laporan_kegiatan'])->name('mentor.report.activity');
+        Route::get( '/cetak', [\App\Http\Controllers\Mentor\LaporanController::class, 'laporan_kegiatan_cetak'])->name('mentor.report.activity.print');
+    });
 });
