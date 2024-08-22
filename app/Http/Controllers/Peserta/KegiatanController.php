@@ -8,6 +8,7 @@ use App\Helper\CustomController;
 use App\Models\Karyawan;
 use App\Models\Kegiatan;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -86,5 +87,20 @@ class KegiatanController extends CustomController
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('failed', 'terjadi kesalahan server...');
         }
+    }
+
+    public function pdf()
+    {
+        $start = $this->field('start');
+        $end = $this->field('end');
+        $query = Kegiatan::with([])
+            ->where('user_id','=', auth()->id());
+
+        $data = $query->get();
+        return $this->convertToPdf('peserta.kegiatan.cetak', [
+            'data' => $data,
+            'start' => $start,
+            'end' => $end
+        ]);
     }
 }

@@ -22,6 +22,8 @@ Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/', [\App\Http\Controllers\Peserta\KegiatanController::class, 'index'])->name('peserta.kegiatan');
     Route::match(['post', 'get'], '/add', [\App\Http\Controllers\Peserta\KegiatanController::class, 'add'])->name('peserta.kegiatan.add');
     Route::post('/{id}/delete', [\App\Http\Controllers\Peserta\KegiatanController::class, 'delete'])->name('peserta.kegiatan.delete');
+    Route::get( '/cetak', [\App\Http\Controllers\Peserta\KegiatanController::class, 'pdf'])->name('peserta.kegiatan.print');
+
 });
 
 Route::group(['prefix' => 'admin'], function () {

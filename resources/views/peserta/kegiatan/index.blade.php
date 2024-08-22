@@ -15,10 +15,16 @@
     <div class="card-content">
         <div class="content-header mb-3">
             <p class="header-title">Data Kegiatan Peserta</p>
-            <a href="{{ route('peserta.kegiatan.add') }}" class="btn-add">
-                <i class='bx bx-plus'></i>
-                <span>Tambah Kegiatan</span>
-            </a>
+            <div class="d-flex justify-content-center align-items-center" style="gap: 0.5rem">
+                <a href="{{ route('peserta.kegiatan.add') }}" class="btn-add">
+                    <i class='bx bx-plus'></i>
+                    <span>Tambah Kegiatan</span>
+                </a>
+                <a href="#" class="btn-print" id="btn-print">
+                    <i class='bx bx-printer'></i>
+                    <span>Cetak</span>
+                </a>
+            </div>
         </div>
         <hr class="custom-divider"/>
         <table id="table-data" class="display table w-100">
@@ -110,6 +116,11 @@
 
         $(document).ready(function () {
             generateTable();
+
+            $('#btn-print').on('click', function (e) {
+                e.preventDefault();
+                window.open('/kegiatan/cetak', '_blank');
+            })
         })
     </script>
 @endsection
