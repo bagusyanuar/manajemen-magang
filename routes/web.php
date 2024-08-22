@@ -17,6 +17,7 @@ Route::match(['post', 'get'], '/', [\App\Http\Controllers\LoginController::class
 Route::match(['post', 'get'], '/register', [\App\Http\Controllers\RegisterController::class, 'register'])->name('register');
 Route::get('/register/selesai', [\App\Http\Controllers\RegisterController::class, 'finish'])->name('register.finish');
 Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::get('/kuota', [\App\Http\Controllers\KuotaController::class, 'index'])->name('kuota');
 
 Route::group(['prefix' => 'kegiatan'], function () {
     Route::get('/', [\App\Http\Controllers\Peserta\KegiatanController::class, 'index'])->name('peserta.kegiatan');

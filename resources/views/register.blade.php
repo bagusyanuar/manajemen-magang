@@ -165,14 +165,20 @@
 
 
                 <div class="d-flex align-items-center justify-content-center w-100" style="font-size: 0.7em">
-                    <div style="color: var(--dark-tint); text-align: center;">Belum punya akun?
-                        <a href="#" class="ms-1"
+                    <div style="color: var(--dark-tint); text-align: center;">Sudah punya akun?
+                        <a href="{{ route('login') }}" class="ms-1"
                            style="color: var(--bg-primary); text-decoration: none; font-weight: bold;">
-                            Daftar Pengajuan Magang
+                            Login
                         </a>
                     </div>
-
                 </div>
+                <div class="d-flex align-items-center justify-content-center w-100" style="font-size: 0.7em">
+                    <a href="{{ route('kuota') }}" class="ms-1"
+                       style="color: var(--bg-primary); text-decoration: none; font-weight: bold;">
+                        Cek Kuota Magang
+                    </a>
+                </div>
+
             </div>
         </form>
 
